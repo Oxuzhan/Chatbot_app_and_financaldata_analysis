@@ -1,0 +1,80 @@
+{
+  "finance_rules": {
+    "new": {
+      "max_vehicle_value": 7000000,
+      "max_loan_percentage": 0.6,
+      "guarantor_required_threshold": 5000000,
+      "excluded_models": ["ticari", "kamyon", "minibüs", "otobüs"],
+      "required_fields": ["vehicle_value", "vehicle_model", "loan_amount"],
+      "optional_fields": ["guarantor_tckn"]
+    },
+    "used": {
+      "max_vehicle_age": 5,
+      "max_loan_percentage": 0.4,
+      "max_loan_amount": 3000000,
+      "required_fields": ["vehicle_value", "vehicle_age", "loan_amount"],
+      "optional_fields": ["seller_tckn"]
+    }
+  },
+  "faq": {
+    "genel_bilgiler": {
+      "faiz_oranlari": "Faiz oranları güncel piyasa koşullarına göre belirlenir. Detaylı bilgi için şubelerimize başvurabilirsiniz.",
+      "vade_secenekleri": "12 ay ile 60 ay arasında vade seçenekleri mevcuttur.",
+      "erken_odeme": "Erken ödeme imkanı bulunmaktadır. Detaylar için sözleşmenizi inceleyiniz.",
+      "sigorta_zorunlulugu": "Araç için kasko sigortası yaptırılması zorunludur."
+    },
+    "basvuru_sureci": {
+      "gerekli_belgeler": "Kimlik belgesi, gelir belgesi, araç proforma faturası veya ekspertiz raporu gereklidir.",
+      "degerlendirme_suresi": "Başvurular genellikle 1-3 iş günü içinde değerlendirilir.",
+      "onay_kriterleri": "Gelir durumu, kredi geçmişi ve araç değeri temel değerlendirme kriterleridir."
+    },
+    "odeme_plani": {
+      "odeme_sekli": "Aylık eşit taksitler şeklinde ödeme yapılır.",
+      "odeme_tarihi": "Ödeme tarihi sözleşmede belirtilen tarihte yapılır.",
+      "gecikme_faizi": "Gecikmeli ödemelerde gecikme faizi uygulanır."
+    },
+    "sss_yanitlari": {
+      "başvuru nasıl yapılır": "Başvuru için lütfen chatbot üzerinden gerekli bilgileri adım adım paylaşın.",
+      "araç finansmanı nedir": "Araç finansmanı, taşıt almak isteyen kişilere banka tarafından sunulan kredi ürünüdür.",
+      "kefil ne zaman gerekir": "Araç değeri 5.000.000 TL ve üzerindeyse kefil bilgisi zorunludur.",
+      "maksimum finansman tutarı ne kadar": "Yeni araçlar için %60, ikinci el araçlar için %40 oranında finansman sağlanabilir. Üst sınır 3.000.000 TL'dir."
+    }
+  },
+  "system_messages": {
+    "greeting": "Merhaba! Araç finansmanı konusunda size yardımcı olmaktan mutluluk duyarım.",
+    "type_selection": "Yeni araç mı yoksa ikinci el araç finansmanı mı istiyorsunuz?",
+    "data_collection_start": "Başvurunuz için bazı bilgilere ihtiyacım var. Lütfen sabırlı olun.",
+    "confirmation_request": "Verdiğiniz bilgileri kontrol etmek ister misiniz?",
+    "application_complete": "Başvurunuz başarıyla tamamlandı!",
+    "error_message": "Üzgünüm, bir hata oluştu. Lütfen tekrar deneyin."
+  },
+  "validation_rules": {
+    "tckn_pattern": "^\\d{11}$",
+    "phone_pattern": "^\\d{10,11}$",
+    "email_pattern": "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$"
+  },
+  "business_logic": {
+    "min_loan_amount": 10000,
+    "max_processing_days": 3,
+    "hgs_cross_sell": true,
+    "application_validity_days": 30
+  },
+  "prompts": {
+    "vehicle_value_new": "Aracın proforma fatura değerini TL cinsinden giriniz:",
+    "vehicle_value_used": "Aracın kasko değerini TL cinsinden giriniz:",
+    "vehicle_model": "Araç modelini belirtiniz:",
+    "vehicle_age": "Aracın yaşını giriniz:",
+    "loan_amount": "İstediğiniz finansman tutarını TL cinsinden giriniz:",
+    "guarantor_tckn": "Kefil T.C. kimlik numarasını giriniz:",
+    "seller_tckn": "Satıcı T.C. kimlik numarasını giriniz (isteğe bağlı):"
+  },
+  "error_messages": {
+    "invalid_vehicle_value": "Geçersiz araç değeri. Lütfen sayısal bir değer giriniz.",
+    "vehicle_too_expensive": "7M TL üzeri araçlar için başvuru yapılamaz.",
+    "vehicle_too_old": "5 yaş üstü araçlar için başvuru yapılamaz.",
+    "commercial_vehicle": "Ticari araçlar için başvuru yapılamaz.",
+    "invalid_loan_amount": "Talep edilen tutar limitleri aşıyor.",
+    "invalid_tckn": "Geçersiz T.C. kimlik numarası.",
+    "missing_guarantor": "Bu tutar için kefil gereklidir."
+  }
+}
